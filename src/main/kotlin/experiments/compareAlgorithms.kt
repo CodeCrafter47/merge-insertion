@@ -7,7 +7,7 @@ import experiments.randomSort
 
 
 fun main(args: Array<String>) {
-    println("num_elements\tMI\tMI/wMerge\tMI/wMergeBinIns\tMI/wMerge12Ins\t1-2-Insertion\t1-2-Insertion-Improved\t1-2-Insertion-Combined")
+    println("num_elements\tMI\tMI/wMerge\tMI/wMergeBinIns\tMI/wMerge12Ins\t1-2-Insertion\t1-2-Insertion-Improved\t1-2-Insertion-Combined\t1-2-Insertion-Combined[factor=1.03]")
 
     val elements = mutableListOf(87381, 174763)
     insertMiddleValues(elements)
@@ -35,6 +35,8 @@ fun main(args: Array<String>) {
         print(randomSort(num_elements, iteration_count(num_elements)) { n, c -> insertion12_improved(n, c) })
         print('\t')
         print(randomSort(num_elements, iteration_count(num_elements)) { n, c -> insertion12_combined(n, c) })
+        print('\t')
+        print(randomSort(num_elements, iteration_count(num_elements)) { n, c -> insertion12_combined(n, c) { k -> (t(k) * 1.03).toLong()} })
         println()
     }
 }

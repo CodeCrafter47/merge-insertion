@@ -68,13 +68,13 @@ fun <T> insertion12_improved(sorted: Long, data: Vector<T>, cmp: Comparator<T>) 
 /**
  * Combination of 1-2-Insertion with MergeInsertion.
  */
-fun insertion12_combined(data: Vector<Int>, cmp: Comparator<Int>) {
+fun<T> insertion12_combined(data: Vector<T>, cmp: Comparator<T>, t: (Int) -> Long = algorithms.t) {
     val pn = (data.size() + .0) / ((2 * java.lang.Long.highestOneBit(data.size() - 1)) + .0)
     val n = if (pn >= 2.0 / 3.0)
         (2 * data.size() / 3 / pn).toLong()
     else
         (data.size() / 3 / pn).toLong()
-    MISort(data, n, cmp, InsStrategy.LEFT)
+    MISort(data, n, cmp, InsStrategy.LEFT, t)
     insertion12_improved(n, data, cmp)
 }
 
